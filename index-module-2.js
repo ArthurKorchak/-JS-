@@ -29,11 +29,11 @@
 // let all = ['Artem', 'Anna', 'Maksim', 'Svetlana', 'David', 'Roman', 'Kate'];
 // const boys = ['Artem', 'Maksim', 'David', 'Roman'];
 
-// // for (let i = all.length - 1; i >= 0; i -= 1) {
-// //     if (boys.indexOf(all[i]) !== -1) {
-// //         all.splice(i, 1)
-// //     }
-// // }
+// for (let i = all.length - 1; i >= 0; i -= 1) {
+//     if (boys.indexOf(all[i]) !== -1) {
+//         all.splice(i, 1)
+//     }
+// }
 
 // for (let i = 0; i < all.length; i += 1) {
 //     if (~boys.indexOf(all[i])) {
@@ -59,7 +59,6 @@
 // ["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
 // ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
 // ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
-
 
 // const arr = ["Alex", "Jacob", "Mark", "Max"];
 // switch (arr.length) {
