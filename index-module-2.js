@@ -77,3 +77,13 @@
 //     default:
 //         console.log(`${arr[0]}, ${arr[1]} and ${arr.length - 2} others like this`);
 // }
+
+// ---------------------------------------------------------------------------------------------------
+
+// Потрібно мутувати масив так що залишились тільки імена. 
+// let names = ['Anna', 3, 'Roma', 17, 'Kate', 14, 'Oleg'];
+// for (let i = 0; i < names.length; i += 1) {
+//         if (typeof names[i] !== "string")
+//             names.splice(i, 1)
+//     }
+// console.log(names)
