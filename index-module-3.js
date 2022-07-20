@@ -175,18 +175,147 @@
 //       salary = worker.salary * worker.month;
 //       return salary;
 //     }
-//   }  
+//   }
 // }
 
 // function getAllWorcerSalary(workers) {
 //   let salary = 0;
 //   for (const worker of workers) {
-//     salary += worker.salary * worker.month; 
+//     salary += worker.salary * worker.month;
 //   }
 //   return salary;
 // }
 
 // console.log(getAllWorcerSalary(workers))
+
+// ---------------------------------------------------------------------------------------------------
+
+// Потрібно порахувати вік всіх юзерів
+
+// Потрібно створити функцію яка буде приймати 2 параметри
+// 1 параметр масив
+// 2 параметр назва книги
+// Функція повертає Імена юзерів (формат стрінги) в яких є ця книга ("Harry Potter") \\\ "Anna, Oleksii"
+
+// const friends = [
+//   { name: "Anna", books: ["Bible", "Harry Potter"], age: 21 },
+//   { name: "Bob", books: ["War and peace", "Romeo and Juliet"], age: 26 },
+//   { name: "Alice", books: ["War and peace", "Romeo and Juliet"]},
+//   { name: "Oleksii", books: ["Bible","War and peace","Harry Potter",  "Romeo and Juliet"], age: 26},
+// ]
+
+// function fn(friends) {
+//   let counter = 0;
+//   for (const friend of friends) {
+//     if (typeof friend.age === 'number') {
+//       counter += friend.age;
+//     }
+//   }
+//   return counter;
+// }
+
+// function fnUserBook(friends, bookName) {
+//   const users = [];
+//   for (const friend of friends) {
+//     if (friend.books.includes(bookName)) {
+//       users.push(friend.name)
+//     }
+//   }
+//   toString(users)
+//   return users.join(', ');
+// }
+
+// console.log(fnUserBook(friends, "Harry Potter"))
+
+// ---------------------------------------------------------------------------------------------------
+
+// Створити функцію яка приймає 1 параметр і повертає мутований масив
+// Потрібно перебрати масив і якщо він має об'єкти в яких дублюються айді то квонтіті цих елементів потрібно
+// сплюсувати
+// а ті обє'кти в яких айді співпав видалити з масиву.
+// (Потрібно мутувати даний масив, створювати новий не потрібно)
+
+// const products = [{
+//     id: 'sku1',
+//     qty: 15,
+// }, {
+//     id: 'sku2',
+//     qty: 21,
+// }, {
+//     id: 'sku3',
+//     qty: 3,
+// }, {
+//     id: 'sku4',
+//     qty: 1,
+// }]
+
+
+// 1. Запустити цикл фор оф
+// 2. В циклі запустити ще один цикл фор оф
+// 3. При збігу виконувати сумування і видалення
+
+// const products = [{
+//     id: 'sku1',
+//     qty: 1,
+// }, {
+//     id: 'sku2',
+//     qty: 2,
+// }, {
+//     id: 'sku3',
+//     qty: 3,
+// }, {
+//     id: 'sku1',
+//     qty: 6,
+// }, {
+//     id: 'sku1',
+//     qty: 8,
+// }, {
+//     id: 'sku2',
+//     qty: 19,
+// }, {
+//     id: 'sku4',
+//     qty: 1,
+// }]
+
+// function fn(products) {
+//   for (let i = 0; i < products.length; i++) {
+//     for (let j = i + 1; j < products.length; j++) {
+//       if (products[i].id === products[j].id) {
+//         products[i].qty += products[j].qty;
+//         products.splice(j, 1);
+//         j -= 1;
+//       }
+//     }
+//   }
+//   return products;
+// }
+
+// console.log(fn(products))
+
+// ---------------------------------------------------------------------------------------------------
+
+// Створити функцію яка буде повертати обєкт
+//  {
+//    a:5
+//    s:7   
+//  }
+
+// const str = 'sasftsaddghfuaaasdda'
+
+// function fn(str) {
+//   const symbols = str.split('');
+//   const result = {};
+//   for (let i = 0; i < str.length; i++) {
+//     if (!Object.keys(result).includes(str[i])) {
+//       result[str[i]] = 1;
+//     } else {
+//       result[str[i]] += 1;
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(fn(str))
 
 // ---------------------------------------------------------------------------------------------------
 
