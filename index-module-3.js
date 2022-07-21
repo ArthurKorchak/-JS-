@@ -297,7 +297,7 @@
 // Створити функцію яка буде повертати обєкт
 //  {
 //    a:5
-//    s:7   
+//    s:7
 //  }
 
 // const str = 'sasftsaddghfuaaasdda'
@@ -383,3 +383,140 @@
 
 // ---------------------------------------------------------------------------------------------------
 
+// Потрібно створити функцію яка буде шукати нарциса. Головна умова нарциса знають всі, нарцис не знає нікого.
+//not found
+
+// const people1 = [{
+//         name: 'Alex',
+//         know: ['Eva', 'Jhon'],
+//     },
+//     {
+//         name: 'Jhon',
+//         know: ['Ivan']
+//     },
+//     {
+//         name: 'Eva',
+//         know: ['Jhon', 'Ivan']
+//     },
+//     {
+//         name: 'Ivan',
+//         know: ['Jhon', 'Alex']
+//     },
+// ];
+
+// //Not found
+// const people2 = [{
+//         name: 'Alex',
+//         know: ['Eva', 'Jhon'],
+//     },
+//     {
+//         name: 'Jhon',
+//         know: []
+//     },
+//     {
+//         name: 'Eva',
+//         know: []
+//     },
+//     {
+//         name: 'Ivan',
+//         know: ['Jhon', 'Alex']
+//     },
+// ];
+// // jhon
+// const people3 = [{
+//         name: 'Alex',
+//         know: ['Eva', 'Jhon'],
+//     },
+//     {
+//         name: 'Jhon',
+//         know: []
+//     },
+//     {
+//         name: 'Eva',
+//         know: ['Alex', 'Jhon']
+//     },
+//     {
+//         name: 'Ivan',
+//         know: ['Jhon', 'Alex']
+//     },
+// ];
+
+// //Not found
+// const people4 = [{
+//     name: 'Alex',
+//     know: ['Eva', 'Jhon'],
+// },
+// {
+//     name: 'Jhon',
+//     know: []
+// },
+// {
+//     name: 'Eva',
+//     know: ['Alex']
+// },
+// {
+//     name: 'Ivan',
+//     know: ['Jhon', 'Alex']
+// },
+// ];
+
+// function fn(peaples) {
+//     let count = 0;
+//     let target = `Нарциса не знайдено`;
+//     for (const people of peaples) {
+//         if (people.know.length === 0) {
+//             count += 1;
+//             let counter = 0;
+//             for (const pep of peaples) {
+//                 if (pep.know.includes(people.name)) {
+//                     counter += 1;
+//                 }
+//             }
+//             if (count > 1) {
+//                 return `Нарциса не знайдено`
+//             }
+//             if (counter === (peaples.length - 1)) {
+//                 target = `Нарцисом є ${people.name}`
+//             }
+//         }
+//     }
+//     return target;
+// }
+
+// console.log(fn(people4));
+
+// ---------------------------------------------------------------------------------------------------
+
+// потрібно створити функцію я буде формувати чергу в магазині
+// 1 перший параметр масив, кілікість елементів це кількість покіпців, значення елементу масиву це час який покупець витратить на касі
+// 2 параметр це кількість кас
+// Повертає обєкт де ключ це номер касси, значення це час черги на касі
+// 12 + 2 + 15 = 29
+// 3 + 5 + 6 + 7 = 21
+// turn([12,3,5,6,2,15,7],2);
+// { 1 : 29, 2 : 21}
+
+// function fn(buyers, cases) {
+//     const cas = [];
+//     for (let i = 0; i < cases; i++) {
+//         cas.push(0);
+//     }
+//     for (let j = 0; j < buyers.length; j++) {
+//         let count = 0;
+//         for (let i = 0; i < cas.length; i++) {
+//             if (cas[i] < cas[i-1]) {
+//                 count = i;
+//             }
+//         }
+//         cas[count] += buyers[j];  
+//     }
+//     const a = {};
+//     for (let i = 0; i < cas.length; i++) {
+//         a[i + 1] = cas[i];
+//     }
+//     return a;
+// }
+
+// console.log(fn([12, 3, 5, 6, 2, 15, 7], 2))
+
+// ---------------------------------------------------------------------------------------------------
