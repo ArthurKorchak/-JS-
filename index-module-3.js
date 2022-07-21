@@ -503,8 +503,10 @@
 //     }
 //     for (let j = 0; j < buyers.length; j++) {
 //         let count = 0;
+//         let variable = cas[0];
 //         for (let i = 0; i < cas.length; i++) {
-//             if (cas[i] < cas[i-1]) {
+//             if (cas[i] < variable) {
+//                 variable = cas[i];
 //                 count = i;
 //             }
 //         }
