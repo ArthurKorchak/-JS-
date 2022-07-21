@@ -319,3 +319,67 @@
 
 // ---------------------------------------------------------------------------------------------------
 
+// Потрібно створити 4 методи об'єкту
+// 1 виводить суму на карті (назву вводимо в prompt())
+// 2 додає нову карту (назву вводимо в prompt())
+// 3 зняти з карти (назву вводимо в prompt() та суму в prompt())
+// 4 додати на карту (назву вводимо в prompt() та суму в prompt())
+
+// const bankSystem = {
+//     name : '*',
+//     privat : 1000,
+//     mono: 1500,
+    
+//     getSum() {
+//         const cardName = prompt();
+//         if (!cardName) {
+//             return 'Хибне введення';
+//         } else if (this[cardName]) {
+//             return this[cardName];
+//         } else {
+//             return 'Карта неіснує';
+//         }
+//     },
+
+//     addCard() {
+//         const cardName = prompt();
+//         if (!cardName) {
+//             return 'Хибне введення';
+//         } else if (this[cardName]) {
+//             return 'Карта вже існує';
+//         } else {
+//             this[cardName] = 0;
+//         }
+//     },
+
+//     getMoney() {
+//         const cardName = prompt();
+//         const sum = Number(prompt());
+//         if (!cardName) {
+//             return 'Хибне введення';
+//         } else if (sum > this[cardName]) {
+//             return 'Недостатньо коштів';
+//         } else if (this[cardName]) {
+//             this[cardName] -= sum;
+//         } else {
+//             return 'Карта неіснує';
+//         }
+//     },
+
+//     addMoney() {
+//         const cardName = prompt();
+//         const sum = Number(prompt());
+//         if (!cardName) {
+//             return 'Хибне введення';
+//         } else if (this[cardName]) {
+//             this[cardName] += sum;
+//         } else {
+//             return 'Карта неіснує';
+//         }
+//     },
+// }
+
+// console.log(bankSystem.addMoney())
+
+// ---------------------------------------------------------------------------------------------------
+
