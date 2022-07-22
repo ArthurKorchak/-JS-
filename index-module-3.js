@@ -510,7 +510,7 @@
 //                 count = i;
 //             }
 //         }
-//         cas[count] += buyers[j];  
+//         cas[count] += buyers[j];
 //     }
 //     const a = {};
 //     for (let i = 0; i < cas.length; i++) {
@@ -520,5 +520,49 @@
 // }
 
 // console.log(fn([12, 3, 5, 6, 2, 15, 7], 2))
+
+// ---------------------------------------------------------------------------------------------------
+
+// // 1 Створити функцію яка робить перевірку чи в меседжі присутні спам слова "sale" , "free".
+// //Якщо в меседжі присутні спам слова повертаємо true, якщо ні то false.
+// const message = 'Attention, we have a Sale'; //true
+// const message1 = 'Hello have a nice day'; //false
+// const message2 = 'You won free shipping'; //true
+// const message3 = 'What are you doing'; //false
+
+// function fn(message) {
+//     let a = false;
+//     if (message.toLowerCase().split(' ').includes("sale") || message.toLowerCase().split(' ').includes("free")) {
+//         a = true;
+//     }
+//     return a;
+// }
+
+// // 2 Замінити всі розширення файлів з .css на .js
+// const files = ['index.css', 'script.js', 'style.css', 'step-types.json', 'firebase.css'];
+
+// function fn1(files) {
+//     for (let i = 0; i < files.length; i++) {
+//         files[i] = files[i].replace(".css", ".js")
+//     }
+//     return files;
+// }
+
+// // 3 Мутувати стрінгу так щоб залишились тільки унікальні значення
+// const str = 'a13aabnff1';
+
+// function fn2(str) {
+//     const liters = str.split('');
+//     for (let i = 0; i < liters.length; i++) {
+//         for (let j = 0; j < liters.length; j++) {
+//             if (liters[i] === liters[j] && i !== j) {
+//                 liters.splice(j, 1)
+//                 i -= 1;
+//             }
+//         }
+//     }
+//     return liters;
+
+// }
 
 // ---------------------------------------------------------------------------------------------------
