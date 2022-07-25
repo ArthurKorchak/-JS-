@@ -48,6 +48,16 @@
 //     }
 // };
 
+// // function printer(values) {
+// //   values.forEach(element => console.log(`Name ${element.name}, age ${element.age})`));
+// // }
+// // function fn(users, callback) {
+// //   const values = Object.values(users);
+// //   callback(values);
+// // }
+// // fn(users, printer);
+
+
 // const printer = values => values.forEach(element => console.log(`Name ${element.name}, age ${element.age}`));
 // const fn = (users, callback) => { values = Object.values(users); callback(values);}
 // fn(users, printer);
