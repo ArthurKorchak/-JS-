@@ -196,3 +196,32 @@
 
 // ---------------------------------------------------------------------------------------------------
 
+// let str = 'aafffffccccsss' // {a:2,f:5,c:4,s:3}
+
+// const fn = str => str.split('').reduce((acc, elem) => {
+//     !acc[elem] ? acc[elem] = 1 : acc[elem] += 1;
+//     return acc;
+// }, {})
+
+// console.log(fn(str));
+
+// console.log(str.split('').reduce((acc, el) => ({ ...acc, [el]: acc[el] + 1 || 1 }), {}));
+
+// ---------------------------------------------------------------------------------------------------
+
+// const clients = ["Mango", "Poly", "Ajax"];
+
+// // В нас є 3 клієнти:
+// // 1 клієнт Mango
+// // 2 клієнт Poly
+// // 3 клієнт Ajax
+
+// const fn = clients => clients.reduce((acc, el, index) => {
+//     acc += `${index + 1} клієнт ${el}\n`;
+//     return acc;
+// }, `В нас є ${clients.length} клієнти:\n`);
+    
+// console.log(fn(clients));
+
+// ---------------------------------------------------------------------------------------------------
+
