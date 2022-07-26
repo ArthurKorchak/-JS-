@@ -225,3 +225,46 @@
 
 // ---------------------------------------------------------------------------------------------------
 
+// const cars = [{
+//         car: 'Honda',
+//         type: 'Civic',
+//         price: 12000
+//     }, {
+//         car: 'Audi',
+//         type: 'Q7',
+//         price: 40000,
+//     }, {
+//         car: 'BMW',
+//         type: '5 siries',
+//         price: 9000,
+//     }, {
+//         car: 'Honda',
+//         type: 'Accord',
+//         price: 20000,
+//     }, {
+//         car: 'Volvo',
+//         type: 'XC60',
+//         price: 7000,
+//     }
+// ]
+
+
+// 1 промпт = 6000
+// 2 промпт = 12000
+// Ми знайшли 3 авто
+// 1. Volvo XC60 ціна 7000
+// 2. BMW 5 siries ціна 9000
+// 3. Honda Civic 12000
+
+// const startPrice = Number(prompt('Ціна від'));
+// const endPrice = Number(prompt('Ціна до'));
+// function fn(cars, startPrice, endPrice) {
+//     const newArr = cars.filter(elem => elem.price >= startPrice && elem.price <= endPrice);
+//     const result = newArr.reduce((acc, el, idx) => acc += `${idx + 1}. ${el.car} ${el.type} ${el.price}\n`,
+//         newArr.length ? `Ми знайшли ${newArr.length} авто\n`: `Ми не знайшли авто =(`);
+//     return result;
+// }
+// console.log(fn(cars, startPrice, endPrice))
+
+// ---------------------------------------------------------------------------------------------------
+
