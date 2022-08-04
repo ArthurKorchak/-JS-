@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    gap: 30px;
+}
+
+.card {
+    width: 250px;
+    text-align: center;
+    border: 1px solid #000000;
+    margin-right: 10px;
+}
+
+.foot {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #000000;
+    padding: 0px 10px;
+}
+
+/* --------------------------------------------------------------------------------------------------- 01 */
