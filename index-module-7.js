@@ -30,7 +30,7 @@ function elemGen(instruments) {
     const gen = instruments.reduce((acc, {id, img, name, price}) => {
         return acc += 
             `<div class="card" id="${id}">
-                <img src="${img}" width="250"></img>
+                <img src="${img}" width="250">
                 <div class="foot">
                     <p class="name">${name}</p>
                     <p class="price">${price} кредитів</p>
