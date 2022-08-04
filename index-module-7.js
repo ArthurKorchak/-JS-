@@ -19,12 +19,10 @@ elemGen(instruments);
 
 window.addEventListener("click", (event) => {
     const id = Number(event.target.parentNode.id);
-    instruments.forEach((elem) => {
-        if (elem.id === id) {
-            console.log(elem.name);
-            console.log(elem.price);
-        };
-    });
+    const currentElem = instruments.find(elem => elem.id === id);
+    console.log(currentElem);
+    console.log(currentElem.name);
+    console.log(currentElem.price);
 });
 
 function elemGen(instruments) {

@@ -1,13 +1,13 @@
 body {
     display: flex;
-    gap: 30px;
+    gap: 15px;
 }
 
 .card {
     width: 250px;
     text-align: center;
     border: 1px solid #000000;
-    margin-right: 10px;
+    padding-bottom: 10px;
 }
 
 .foot {
