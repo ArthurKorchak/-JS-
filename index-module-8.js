@@ -20,87 +20,87 @@ const instruments = [{
     price: 175
 }];
 
-let items = [];
 const wrapp = document.querySelector('.wrapper');
 
+document.querySelector('.goods').addEventListener ('click', () => {
+    elemGen(instruments)
+});
+
 document.querySelector('.fav').addEventListener('click', () => {
-    if (localStorage.getItem('itemsInFav')) {
-        elemGen(Array.from(JSON.parse(localStorage.getItem('itemsInFav'))));
+    if (localStorage.getItem('itemsFavorite')) {
+        elemGen(Array.from(JSON.parse(localStorage.getItem('itemsFavorite'))));
     } else {
         wrapp.innerHTML = 'НЕМАЄ ОБРАНОГО!';
     };
 });
 
 document.querySelector('.basket').addEventListener('click', () => {
-    if (localStorage.getItem('itemsBuy')) {
-        const currentBask = Array.from(JSON.parse(localStorage.getItem('itemsBuy')))
+    if (localStorage.getItem('itemsBasket')) {
+        const currentBask = Array.from(JSON.parse(localStorage.getItem('itemsBasket')))
         elemGen(currentBask);
         wrapp.insertAdjacentHTML("beforeend", `Сума ${currentBask.reduce((acc, el) => {
             return acc += el.price;
-        }, 0)} кредитів`);
+        }, 0)} &curren`);
     } else {
        wrapp.innerHTML = 'КОРЗИНА ПОРОЖНЯ!';
     };
 });
 
-const form = document.addEventListener('submit', (event) => {
-    const addPlace = document.querySelector(".wrapper");
+document.addEventListener('submit', (event) => {
     event.preventDefault();
     const itemName = event.target[0].value;
-    event.target[0].value = ''
-    items = instruments.filter((elem) => elem.name.toLowerCase() === itemName.toLowerCase())
-    elemGen(items);
+    event.target[0].value = '';
+    elemGen(instruments.filter((elem) => itemName && elem.name.toLowerCase().includes(itemName.toLowerCase())));
+});
 
-    addPlace.addEventListener("click", (event) => {
-        const id = Number(event.target.parentNode.id);
-        const currentElem = instruments.find(elem => elem.id === id && event.target.classList.contains('buy'));
-        if (currentElem) {
-            if (localStorage.getItem('itemsBuy')) {
-                const variable = Array.from(JSON.parse(localStorage.getItem('itemsBuy')));
-                if (!variable.some((el) => el.id === id)) {
-                    variable.push(currentElem);
-                    localStorage.setItem('itemsBuy', JSON.stringify(variable));
-                };
-            } else {
-                const start = [];
-                start.push(currentElem);
-                localStorage.setItem('itemsBuy', JSON.stringify(start));
+wrapp.addEventListener("click", (event) => {
+    const id = Number(event.target.parentNode.id);
+    const currentElem = instruments.find(elem => elem.id === id && event.target.classList.contains('toBasket'));
+    if (currentElem) {
+        if (localStorage.getItem('itemsBasket')) {
+            const variable = Array.from(JSON.parse(localStorage.getItem('itemsBasket')));
+            if (!variable.some((el) => el.id === id)) {
+                variable.push(currentElem);
+                localStorage.setItem('itemsBasket', JSON.stringify(variable));
             };
+        } else {
+            const start = [];
+            start.push(currentElem);
+            localStorage.setItem('itemsBasket', JSON.stringify(start));
         };
-    });
+    };
+});
 
-    addPlace.addEventListener("click", (event) => {
-        const id = Number(event.target.parentNode.id);
-        const currentElem = instruments.find(elem => elem.id === id && event.target.classList.contains('tofavorite'));
-        if (currentElem) {
-            if (localStorage.getItem('itemsInFav')) {
-                const variable = Array.from(JSON.parse(localStorage.getItem('itemsInFav')));
-                if (!variable.some((el) => el.id === id)) {
-                    variable.push(currentElem);
-                    localStorage.setItem('itemsInFav', JSON.stringify(variable));
-                };
-            } else {
-                const start = [];
-                start.push(currentElem);
-                localStorage.setItem('itemsInFav', JSON.stringify(start));
+wrapp.addEventListener("click", (event) => {
+    const id = Number(event.target.parentNode.id);
+    const currentElem = instruments.find(elem => elem.id === id && event.target.classList.contains('toFavorite'));
+    if (currentElem) {
+        if (localStorage.getItem('itemsFavorite')) {
+            const variable = Array.from(JSON.parse(localStorage.getItem('itemsFavorite')));
+            if (!variable.some((el) => el.id === id)) {
+                variable.push(currentElem);
+                localStorage.setItem('itemsFavorite', JSON.stringify(variable));
             };
+        } else {
+            const start = [];
+            start.push(currentElem);
+            localStorage.setItem('itemsFavorite', JSON.stringify(start));
         };
-    });
+    };
 });
 
 function elemGen(instruments) {
-    wrapp.innerHTML = '';
     const gen = instruments.reduce((acc, {id, img, name, price}) => {
         return acc +=
             `<div class="card" id="${id}">
                 <img src="${img}" width="200">
                 <div class="foot">
                     <p class="name">${name}</p>
-                    <p class="price">${price} кредитів</p>
+                    <p class="price">${price} &curren;</p>
                 </div>
-                <button class="buy">Купити</button>
-                <button class="tofavorite">Додати в обрані</button>
+                <button class="toBasket">Купити</button>
+                <button class="toFavorite">Додати в обрані</button>
             </div>`
     }, ``);
-    wrapp.insertAdjacentHTML("beforeend", gen);
+    wrapp.innerHTML = gen;
 };
