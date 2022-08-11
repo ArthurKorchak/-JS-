@@ -1,20 +1,39 @@
 body {
 }
 
+img {
+    display: block
+}
+
 header {
     display: flex;
-    flex-direction: row;
     gap: 15px;
     padding: 15px 5px;
     border-bottom: 1px solid #000000;
 }
+
+header.button {
+    height: 28px;
+    font-size: 15px;
+}
+
 .btnSet {
     display: flex;
     gap: 15px;
 }
 
-/* .searchForm {
-} */
+.toBasket {
+    margin-right: 5px;
+}
+
+input {
+    height: 22px;
+}
+
+.searchForm {
+    display: flex;
+    gap: 5px;
+}
 
 .wrapper {
     padding: 15px 0;
