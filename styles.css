@@ -1,6 +1,3 @@
-body {
-}
-
 img {
     display: block
 }
@@ -75,6 +72,12 @@ input {
     justify-content: space-between;
     border-top: 1px solid #000000;
     padding: 0px 10px;
+}
+
+.btns {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
 }
 
 /* --------------------------------------------------------------------------------------------------- 01 */

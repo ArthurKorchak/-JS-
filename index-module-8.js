@@ -20,50 +20,16 @@ const instruments = [{
     price: 175
 }];
 
-const wrapp = document.querySelector('.wrapper');
 const content = document.querySelector('.content');
 
 elemGen(instruments);
+itemRemover();
+storageOperator('Favorite');
+storageOperator('Basket');
 
-document.querySelector('.goods').addEventListener ('click', () => {
-    elemGen(instruments);
-});
-
-document.querySelector('.fav').addEventListener('click', () => {
-    if (localStorage.getItem('itemsFavorite')) {
-        const currentFavoritr = Array.from(JSON.parse(localStorage.getItem('itemsFavorite')));
-        elemGen(currentFavoritr);
-        content.insertAdjacentHTML("afterbegin", `<div class="contentHead">
-            <p>Товарів обрано: ${currentFavoritr.length}</p>
-            <button class="favoreClear">🗑️ Очистити обране</button>
-        </div>`);
-        cleaner((document.querySelector('.favoreClear')), 'Favorite', 'НЕМАЄ ОБРАНОГО!')
-    } else {
-        content.innerHTML = 'НЕМАЄ ОБРАНОГО!';
-    };
-});
-
-document.querySelector('.basket').addEventListener('click', () => {
-    if (localStorage.getItem('itemsBasket')) {
-        const currentBask = Array.from(JSON.parse(localStorage.getItem('itemsBasket')));
-        elemGen(currentBask);
-        content.insertAdjacentHTML("afterbegin", `<div class="contentHead">
-            <p>Товарів у корзині: ${currentBask.length}</p>
-            <p>Загальна вартість: ${currentBask.reduce((acc, el) => { return acc += el.price; }, 0)} credit</p>
-            <button class="buy">✔️ Замовити</button>
-            <button class="basketClear">🗑️ Очистити корзину</button>
-        </div>`);
-        cleaner((document.querySelector('.basketClear')), 'Basket', 'КОРЗИНА ПОРОЖНЯ!');
-        document.querySelector('.buy').addEventListener('click', () => {
-            console.log(currentBask);
-            localStorage.setItem(`itemsBasket`, []);
-            document.querySelector('.content').innerHTML = '✔️ Обробка замовлення';
-        });
-    } else {
-       content.innerHTML = 'КОРЗИНА ПОРОЖНЯ!';
-    };
-});
-
+document.querySelector('.goods').addEventListener ('click', () => elemGen(instruments));
+document.querySelector('.fav').addEventListener('click', () => favoriteOperator());
+document.querySelector('.basket').addEventListener('click', () => basketOperator());
 document.addEventListener('submit', (event) => {
     event.preventDefault();
     const itemName = event.target[0].value;
@@ -71,10 +37,7 @@ document.addEventListener('submit', (event) => {
     elemGen(instruments.filter((elem) => itemName && elem.name.toLowerCase().includes(itemName.toLowerCase())));
 });
 
-operator('Favorite');
-operator('Basket');
-
-function operator(param) {
+function storageOperator(param) {
     content.addEventListener("click", (event) => {
     const id = Number(event.target.parentNode.id);
     const currentElem = instruments.find(elem => elem.id === id && event.target.classList.contains(`to${param}`));
@@ -94,11 +57,50 @@ function operator(param) {
     });
 };
 
-function cleaner(place, data, mass) {
-    place.addEventListener('click', () => {
-        localStorage.setItem(`items${data}`, []);
-        document.querySelector('.content').innerHTML = `${mass}`;
-    });
+function favoriteOperator() {
+    if (localStorage.getItem('itemsFavorite').length > 2) {
+        const currentFavoritr = Array.from(JSON.parse(localStorage.getItem('itemsFavorite')));
+        elemGen(currentFavoritr);
+        content.insertAdjacentHTML("afterbegin", `<div class="contentHead">
+            <p>Товарів обрано: ${currentFavoritr.length}</p>
+            <button class="favoreClear">🗑️ Очистити обране</button>
+        </div>`);
+        document.querySelector('.favoreClear').addEventListener('click', () => cleanerAll('Favorite', 'НЕМАЄ ОБРАНОГО!'));
+        document.querySelectorAll('.toFavorite').forEach(elem => {
+            elem.innerHTML = `Прибрати`;
+            elem.classList.replace('toFavorite', 'removeItem');
+        });
+    } else {
+        content.innerHTML = 'НЕМАЄ ОБРАНОГО!';
+    };
+};
+
+function basketOperator() {
+    if (localStorage.getItem('itemsBasket').length > 2) {
+        const currentBask = Array.from(JSON.parse(localStorage.getItem('itemsBasket')));
+        elemGen(currentBask);
+        content.insertAdjacentHTML("afterbegin", `<div class="contentHead">
+            <p>Товарів у корзині: ${currentBask.length}</p>
+            <p>Загальна вартість: ${currentBask.reduce((acc, el) => { return acc += el.price; }, 0)} credit</p>
+            <button class="buy">✔️ Замовити</button>
+            <button class="basketClear">🗑️ Очистити корзину</button>
+            </div>`);
+        document.querySelector('.buy').addEventListener('click', () => {
+            console.log(currentBask);
+            localStorage.setItem(`itemsBasket`, []);
+            content.innerHTML = '✔️ Обробка замовлення';
+        });
+        document.querySelector('.basketClear').addEventListener('click', () => cleanerAll('Basket', 'КОРЗИНА ПОРОЖНЯ!'));
+        document.querySelectorAll('.toBasket').forEach(elem => {
+            elem.remove();
+        });
+        document.querySelectorAll('.toFavorite').forEach(elem => {
+            elem.innerHTML = `Прибрати`;
+            elem.classList.replace('toFavorite', 'removeItem');
+        });
+    } else {
+        content.innerHTML = 'КОРЗИНА ПОРОЖНЯ!';
+    };
 };
 
 function elemGen(instruments) {
@@ -115,4 +117,26 @@ function elemGen(instruments) {
             </div>`
     }, ``);
     content.innerHTML = `<div class="wrapper">${gen}</div>`;
+};
+
+function itemRemover() {
+    content.addEventListener('click', (event) => {
+        const id = Number(event.target.parentNode.id);
+        const isCurrenPlaceBasket = document.querySelector('.buy');
+        const isBtnRemove = event.target.classList.contains('removeItem');
+        if (isBtnRemove && isCurrenPlaceBasket) {
+            const elems = Array.from(JSON.parse(localStorage.getItem(`itemsBasket`))).filter(elem => elem.id !== id);
+            localStorage.setItem(`itemsBasket`, JSON.stringify(elems));
+            basketOperator();
+        } else if (isBtnRemove && !isCurrenPlaceBasket) {
+            const elems = Array.from(JSON.parse(localStorage.getItem(`itemsFavorite`))).filter(elem => elem.id !== id);
+            localStorage.setItem(`itemsFavorite`, JSON.stringify(elems));
+            favoriteOperator();
+        };
+    });
+};
+
+function cleanerAll(data, mass) {
+    localStorage.setItem(`items${data}`, []);
+    content.innerHTML = `${mass}`;
 };
