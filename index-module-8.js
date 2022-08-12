@@ -23,7 +23,7 @@ const instruments = [{
 const wrapp = document.querySelector('.wrapper');
 const content = document.querySelector('.content');
 
- elemGen(instruments);
+elemGen(instruments);
 
 document.querySelector('.goods').addEventListener ('click', () => {
     elemGen(instruments);
